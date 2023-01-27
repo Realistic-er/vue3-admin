@@ -1,25 +1,38 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
+import { createRouter, createWebHistory } from 'vue-router';
+import { routecommon, routeadmin } from '@/utils/router';
+import type { RouteRecordRaw } from 'vue-router';
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-  },
-  {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue'),
-  },
-];
-
+const routes: Array<RouteRecordRaw> = routecommon;
+let registerRouteFresh = true;
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+router.beforeEach(async (to, from, next) => {
+  const account = window.localStorage.getItem('account');
+  // 已经登录
+  if (account) {
+    // 第一次挂载路由
+    if (registerRouteFresh) {
+      if (account === 'admax') {
+        routeadmin.forEach((i) => {
+          router.addRoute(i);
+        });
+        window.localStorage.setItem('menu', JSON.stringify(routeadmin));
+      }
+      next({ ...to, replace: true });
+      registerRouteFresh = false;
+    } else {
+      next();
+    }
+    // 没有登录，返回登录页面
+  } else {
+    if (to.path === '/login') {
+      next();
+    } else {
+      next('login');
+    }
+  }
 });
 
 export default router;

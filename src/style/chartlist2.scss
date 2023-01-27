@@ -1,0 +1,29 @@
+.salecontainer {
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        border: 1px dashed #C2DAF2;
+        padding: 20px;
+        background-color: rgb(143, 201, 251);
+        color: red;
+        width: calc((100% - 500px)/5);
+        margin-left: 40px;
+        text-align: center;
+        margin-bottom: 30px;
+        img {
+          width: 100px;
+          height: 100px;
+          border-radius: 50px;
+        }
+        p {
+          text-align: center;
+          padding-top: 10px;
+        }
+      }
+      li:hover {
+        transform: scale(1.2);
+        transition: all 0.6s;
+      }
+    }
+  }
