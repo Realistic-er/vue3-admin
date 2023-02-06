@@ -22,6 +22,8 @@
         @click="changescreen(icon)"></component>
         <!-- 头像 -->
         <img src="../assets/index.webp" alt="">
+        <!-- 退出 -->
+        <el-button text type="success" @click="open">退出</el-button>
       </div>
     </div>
     <!-- 下边 -->
@@ -67,6 +69,7 @@ import {
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import screenfull from 'screenfull';
+import { ElMessage, ElMessageBox } from 'element-plus';
 import { iconname } from '../utils/rule';
 
 interface RestaurantItem {
@@ -143,6 +146,33 @@ const loadAll = () => [
 
 const handleSelect = (item: RestaurantItem) => {
   console.log(item);
+};
+
+const open = () => {
+  ElMessageBox.confirm(
+    '是否选择退出?',
+    'Warning',
+    {
+      confirmButtonText: '退出',
+      cancelButtonText: '取消',
+      type: 'warning',
+    },
+  )
+    .then(() => {
+      router.push({
+        name: 'Login',
+      });
+      ElMessage({
+        type: 'success',
+        message: '退出成功',
+      });
+    })
+    .catch(() => {
+      ElMessage({
+        type: 'info',
+        message: '退出失败',
+      });
+    });
 };
 
 onMounted(() => {
