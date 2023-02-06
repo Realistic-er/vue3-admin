@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { routecommon, routeadmin } from '@/utils/router';
+import { routecommon, routeadmin, childrenArray } from '@/utils/router';
 import type { RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = routecommon;
@@ -14,12 +14,19 @@ router.beforeEach(async (to, from, next) => {
   if (account) {
     // 第一次挂载路由
     if (registerRouteFresh) {
-      if (account === 'admax') {
-        routeadmin.forEach((i) => {
-          router.addRoute(i);
-        });
-        window.localStorage.setItem('menu', JSON.stringify(routeadmin));
-      }
+      const array = [];
+      childrenArray.forEach((v) => {
+        const arrayrole = v.meta.role as any;
+        if (arrayrole.indexOf(account) !== -1) {
+          array.push(v);
+        }
+      });
+      console.log(array);
+      routeadmin[0].children = array;
+      routeadmin.forEach((i) => {
+        router.addRoute(i);
+      });
+      window.localStorage.setItem('menu', JSON.stringify(routeadmin));
       next({ ...to, replace: true });
       registerRouteFresh = false;
     } else {

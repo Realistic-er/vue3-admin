@@ -1,5 +1,7 @@
 <template>
-  <div>这是错误集合页面</div>
+  <div class="gifcontainer">
+    <img src="../../assets/404.jpg" alt="">
+  </div>
 </template>
 
 <script lang="ts">
@@ -14,5 +16,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+.gifcontainer {
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}
 </style>

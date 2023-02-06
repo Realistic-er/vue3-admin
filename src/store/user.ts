@@ -10,7 +10,7 @@ interface account {
 
 export default {
   state: (): user => ({
-    account: 'admax',
+    account: '',
     password: '12adx',
   }),
   getters: {

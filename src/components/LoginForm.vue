@@ -50,7 +50,7 @@ export default defineComponent({
     const size = ref('default');
     // 表单绑定数据
     const ruleForm = reactive({
-      account: 'admax',
+      account: '',
       password: '12adx',
     });
     // 验证ref点
