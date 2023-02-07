@@ -79,7 +79,7 @@ export const childrenArray:Array<RouteRecordRaw> = [
         component: () => import('../views/chart/ChartList1.vue'),
         meta: {
           title: '品牌销量',
-          icon: 'Money',
+          icon: 'VideoPlay',
           role: [
             'admin', 'admax',
           ],
@@ -129,7 +129,7 @@ export const childrenArray:Array<RouteRecordRaw> = [
         component: () => import('../views/document/ReactDocu.vue'),
         meta: {
           title: 'react文档',
-          icon: 'Document',
+          icon: 'VideoPause',
           role: [
             'admin', 'admax',
           ],
@@ -141,7 +141,7 @@ export const childrenArray:Array<RouteRecordRaw> = [
         component: () => import('../views/document/VueDocu.vue'),
         meta: {
           title: 'vue文档',
-          icon: 'Document',
+          icon: 'VideoCamera',
           role: [
             'admin', 'admax',
           ],
@@ -167,7 +167,7 @@ export const childrenArray:Array<RouteRecordRaw> = [
         component: () => import('../views/tablelist/TableList1.vue'),
         meta: {
           title: '货物管理',
-          icon: 'Notebook',
+          icon: 'Microphone',
           role: [
             'admin', 'admax',
           ],
@@ -179,7 +179,7 @@ export const childrenArray:Array<RouteRecordRaw> = [
         component: () => import('../views/tablelist/TableList2.vue'),
         meta: {
           title: '权限管理',
-          icon: 'Notebook',
+          icon: 'Mute',
           role: [
             'admin', 'admax',
           ],
@@ -191,7 +191,7 @@ export const childrenArray:Array<RouteRecordRaw> = [
         component: () => import('../views/tablelist/TableList3.vue'),
         meta: {
           title: '路由管理',
-          icon: 'Notebook',
+          icon: 'Mic',
           role: [
             'admin', 'admax',
           ],
@@ -206,11 +206,51 @@ export const childrenArray:Array<RouteRecordRaw> = [
     component: () => import('../views/setting/SettingPage.vue'),
     meta: {
       title: '设置',
-      icon: 'Menu',
+      icon: 'Tools',
       role: [
         'admid', 'admax',
       ],
     },
     children: [],
+  },
+  // 错误
+  {
+    path: 'error',
+    name: 'error',
+    meta: {
+      title: '错误',
+      icon: 'Failed',
+      role: [
+        'admid', 'admax',
+      ],
+    },
+    children: [
+      {
+        path: 'error403',
+        name: 'error403',
+        component: () => import('../views/errorlist/ErrorList3.vue'),
+        meta: {
+          title: '403页面',
+          icon: 'CircleCloseFilled',
+          role: [
+            'admid', 'admax',
+          ],
+        },
+        children: [],
+      },
+      {
+        path: 'error404',
+        name: 'error404',
+        component: () => import('../views/errorlist/ErrorList4.vue'),
+        meta: {
+          title: '404页面',
+          icon: 'QuestionFilled',
+          role: [
+            'admid', 'admax',
+          ],
+        },
+        children: [],
+      },
+    ],
   },
 ];
