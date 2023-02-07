@@ -7,6 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AddDialog: typeof import('./src/components/table/AddDialog.vue')['default']
+    AddDialog2: typeof import('./src/components/table2/AddDialog2.vue')['default']
+    AddDialog3: typeof import('./src/components/table3/AddDialog3.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElAutocomplete: typeof import('element-plus/es')['ElAutocomplete']
     ElBreadcrumb: typeof import('element-plus/es')['ElBreadcrumb']
@@ -31,9 +34,12 @@ declare module '@vue/runtime-core' {
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
     ElTag: typeof import('element-plus/es')['ElTag']
+    LineChart: typeof import('./src/components/chartlist2/LineChart.vue')['default']
+    LoginForm: typeof import('./src/components/LoginForm.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     RouteTable: typeof import('./src/components/table3/RouteTable.vue')['default']
+    SideMenu: typeof import('./src/components/SideMenu.vue')['default']
     TopMenu: typeof import('./src/components/TopMenu.vue')['default']
     UploadImage: typeof import('./src/components/table/UploadImage.vue')['default']
   }
